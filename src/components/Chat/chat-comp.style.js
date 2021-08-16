@@ -19,4 +19,5 @@ export const chatCompStyle = StyleSheet.create({
         color: "gray",
         overflow: "hidden",
     },
+
 })
