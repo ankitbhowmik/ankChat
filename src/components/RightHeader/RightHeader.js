@@ -4,6 +4,7 @@ import { View, Text, Modal, TouchableOpacity, TouchableWithoutFeedback } from "r
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/Entypo';
 import { rightHeaderStyle } from './rightHeader.style';
+import { useNavigation } from '@react-navigation/native';
 
 const RightHeader = () => {
     const [headerModalVisible, setHeaderModalVisible] = useState(false);
@@ -20,6 +21,7 @@ const RightHeader = () => {
 }
 
 const HeaderOptionModal = ({ headerModalVisible, setHeaderModalVisible }) => {
+    const navigator = useNavigation();
     return (
         <Modal
             animationType="none"
@@ -31,7 +33,9 @@ const HeaderOptionModal = ({ headerModalVisible, setHeaderModalVisible }) => {
                 <TouchableWithoutFeedback style={rightHeaderStyle.modalView}>
                     <View style={[rightHeaderStyle.modalView,]}>
                         <Text style={rightHeaderStyle.optionText}>New group</Text>
-                        <Text style={rightHeaderStyle.optionText}>Settings</Text>
+                        <TouchableOpacity onPress={() => navigator.navigate("Settings")}>
+                            <Text style={rightHeaderStyle.optionText}>Settings</Text>
+                        </TouchableOpacity>
                         <Text style={rightHeaderStyle.optionText}>Status privacy</Text>
                     </View>
                 </TouchableWithoutFeedback>
